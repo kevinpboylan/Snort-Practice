@@ -5,7 +5,7 @@ Snort is a very popular open source IDS (intrusion detection system).  As such, 
 
 --- Getting Set Up ---
 
-Kali's default sources list doesn't include access to Snort.  Why? Good question. My thinking is that Kali is primarily a distro for OFFENSIVE security, and setting up an IDS is outside of that mission.  In fact, an IDS probably ins't meant to be on a workstation at all.  Regardless, getting Snort running requires first adding to Kali's default repository.
+Kali's default sources list doesn't include access to Snort.  Why? Good question. My thinking is that Kali is primarily a distro for OFFENSIVE security, and setting up an IDS is outside of that mission.  In fact, an IDS probably isn't meant to be on a workstation at all.  Regardless, getting Snort running requires first adding to Kali's default repository.
 
 First, open the sources list to edit:
 ```
