@@ -83,7 +83,21 @@ alert tcp any any -> 192.168.56.0/24 22 (msg: "NMAP TCP Scan"; sid:1000007;)
 
 Save, exit, run the same test, boom, it works!
 
-I went on to write rules looking for a few other specific NMAP scans, and they worked. The next step was thinking about how an attacker might try to avoid those rules. After all, that's the push and pull of this industry, right? 
+I went on to write rules looking for a few other specific NMAP scans (like an Xmas scan), and they worked. The next step was thinking about how an attacker might try to avoid those rules. After all, that's the push and pull of this industry, right? 
 
 --- Evading Snort Rules --- 
 
+I found some tactics to evading these Snort rules, and they're built in to NMAP (easy to see why it pays to become an expert on this program).
+
+For example, to evade the Xmas scan rule (which looks for TCP conncetions with the FIN, PSH, and URG flags set) is to use the '--scanflags FINPSH' option with the Xmas scan. 
+
+```
+nmap -sX --scanflags FINPSH <target IP>
+```
+
+And voila, I can run the scan and Snort doesn't give any alers for an Xmas scan! (the official documentation is always helpful: https://nmap.org/book/subvert-ids.html)
+
+
+--- Conclusion ---
+
+This was a really helpful exercise for me, mainly because it's one thing to read the structure of a Snort rule, and another thing to actually build some out and see them working.  It was also helpful to think about how to implement a simple rule to detect something (relatively) complex like an NMAP scan hitting your entire network/host.  Where to go from here?  Well, I would probably look into setting up snort on my home network, which will involve learning about the huge amounts of publicly available Snort rules, rather than writing them all myself.  Cool stuff!
